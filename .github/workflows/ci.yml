@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Skill Files
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check skill files exist
+        run: |
+          echo "Checking skills directory..."
+          if [ ! -d "skills" ]; then
+            echo "❌ skills/ directory not found"
+            exit 1
+          fi
+          echo "✅ skills/ directory exists"
+
+      - name: Validate skill file structure
+        run: |
+          echo "Validating skill file structure..."
+          REQUIRED_SECTIONS=("Description" "Instructions" "Examples")
+
+          for skill_file in skills/*.md; do
+            if [ ! -f "$skill_file" ]; then
+              echo "⚠️  No skill files found"
+              continue
+            fi
+
+            filename=$(basename "$skill_file")
+            echo "Checking: $filename"
+
+            for section in "${REQUIRED_SECTIONS[@]}"; do
+              if ! grep -qi "## $section" "$skill_file"; then
+                echo "❌ $filename is missing required section: ## $section"
+                exit 1
+              fi
+            done
+
+            echo "✅ $filename passed validation"
+          done
+
+      - name: Check for sensitive information
+        run: |
+          echo "Checking for sensitive information..."
+          PATTERNS=(
+            "api_key"
+            "api-key"
+            "apikey"
+            "secret"
+            "password"
+            "token"
+            "credential"
+            "private_key"
+            "-----BEGIN"
+          )
+
+          found_sensitive=false
+          for pattern in "${PATTERNS[@]}"; do
+            if grep -ri "$pattern" skills/ --include="*.md" -l 2>/dev/null; then
+              echo "⚠️  Potential sensitive information found matching: $pattern"
+              found_sensitive=true
+            fi
+          done
+
+          if [ "$found_sensitive" = true ]; then
+            echo "⚠️  Please review the above files for sensitive information"
+            echo "Note: This is a warning, not a failure. Review manually."
+          else
+            echo "✅ No obvious sensitive information found"
+          fi
+
+      - name: Check README has all skills listed
+        run: |
+          echo "Checking README references..."
+          for skill_file in skills/*.md; do
+            if [ ! -f "$skill_file" ]; then
+              continue
+            fi
+
+            filename=$(basename "$skill_file" .md)
+            if ! grep -q "$filename" README.md; then
+              echo "⚠️  $filename is not referenced in README.md"
+            fi
+          done
+          echo "✅ README check complete"
+
+      - name: Validate markdown syntax
+        run: |
+          echo "Checking for broken markdown links..."
+          # Check for common markdown issues
+          for md_file in *.md skills/*.md examples/*.md; do
+            if [ ! -f "$md_file" ]; then
+              continue
+            fi
+
+            # Check for unclosed code blocks
+            backtick_count=$(grep -c '```' "$md_file" || true)
+            if [ $((backtick_count % 2)) -ne 0 ]; then
+              echo "❌ $md_file has unclosed code block (odd number of \`\`\`)"
+              exit 1
+            fi
+          done
+          echo "✅ Markdown syntax check passed"
