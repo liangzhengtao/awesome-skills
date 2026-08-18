@@ -175,7 +175,7 @@ def one_way_anova(*groups, alpha=0.05):
         else:
             stat, p_value = stats.f_oneway(*groups)  # Welch's ANOVA
             test_name = "Welch's ANOVA"
-            effect_report = "(use robust methods)"
+            effect_report = "(use reliable methods)"
     else:
         stat, p_value = stats.kruskal(*groups)
         test_name = "Kruskal-Wallis H test"
