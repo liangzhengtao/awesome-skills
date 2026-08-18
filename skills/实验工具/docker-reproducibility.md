@@ -736,6 +736,6 @@ echo "Image $IMAGE_NAME built and verified."
 - [Docker 官方文档](https://docs.docker.com/)
 - [Docker Compose 文档](https://docs.docker.com/compose/)
 - [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit)
-- [Docker Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+- [Docker Proven Patterns](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 - [NVIDIA NGC Containers](https://catalog.ngc.nvidia.com/)
 - [Reproducible Research with Docker - The Turing Way](https://the-turing-way.netlify.app/reproducible-research/renv/renv-docker.html)

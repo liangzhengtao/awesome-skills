@@ -220,7 +220,7 @@ keyword1 \sep keyword2 \sep keyword3 \sep keyword4
 % 期刊论文
 @article{smith2024attention,
   author    = {Smith, John and Doe, Jane and Zhang, Wei},
-  title     = {Attention Mechanisms in Deep Learning: A Comprehensive Survey},
+  title     = {Attention Mechanisms in Deep Learning: A Complete Survey},
   journal   = {IEEE Transactions on Neural Networks and Learning Systems},
   volume    = {35},
   number    = {3},
@@ -488,7 +488,7 @@ configuration, software versions, and hyperparameter search space.}
 
 \quoteR{What is the computational cost of the proposed method?}
 
-\response{Thank you for this important question. We have added a comprehensive
+\response{Thank you for this important question. We have added a complete
 computational analysis in Table~3.}
 \change{See the new Table~3 and the discussion in Section~4.6.}
 

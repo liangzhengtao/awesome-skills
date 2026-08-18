@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`citation-management`** — Citation formatting across styles (APA, IEEE, Nature, Chicago, MLA)
 
 #### 🔬 Experiment Tools
-- **`jupyter-notebook`** — Clean Jupyter notebook workflows with best practices
+- **`jupyter-notebook`** — Clean Jupyter notebook workflows with proven patterns
 - **`docker-reproducibility`** — Reproducible research environments with Docker
 
 #### 📬 Paper Submission

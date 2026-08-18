@@ -34,7 +34,7 @@ This security policy covers:
 - Any scripts or automation in the repository
 - Documentation that may expose credentials or secrets
 
-### Best Practices for Contributors
+### Proven Patterns for Contributors
 
 When contributing skills:
 - **Never** include API keys, tokens, or passwords

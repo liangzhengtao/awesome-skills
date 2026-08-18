@@ -31,7 +31,7 @@
 | thing | factor / aspect / element | This **factor** influences... |
 | talk about | discuss / address / examine | We **examine** the impact of... |
 | fix | resolve / address / mitigate | We **mitigate** this issue by... |
-| use | employ / utilize / leverage | We **leverage** pre-trained models |
+| use | employ / utilize / use | We **leverage** pre-trained models |
 | make sure | ensure / guarantee | We **ensure** reproducibility by... |
 | enough | sufficient / adequate | **Sufficient** training data is... |
 | nowadays | currently / in recent years | **Currently**, the主流 approach is... |

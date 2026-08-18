@@ -298,7 +298,7 @@ Generate:
    cp skills/latex-paper.md CLAUDE.md
    ```
 
-3. **Layer skills** for comprehensive instructions:
+3. **Layer skills** for complete instructions:
    ```bash
    # Base + specific
    cat skills/latex-paper.md skills/conference-submission.md > CLAUDE.md
